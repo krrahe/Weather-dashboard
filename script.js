@@ -1,10 +1,10 @@
 var apiKey = "f55366a729e94f86bd5cbfbf957669b0";
-
+//cute little thing to show weather where you are 
 function currentWeather() {
   navigator.geolocation.getCurrentPosition(function (position) {
     longitude = position.coords.longitude;
     latitude = position.coords.latitude;
-
+//counldnt get 3.0 to work but all the documentation is in 2.5 so idk 
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?lat=" +
       latitude +
@@ -17,7 +17,7 @@ function currentWeather() {
       url: queryURL,
       method: "GET",
     })
-      // We store all of the retrieved data inside of an object called "response"
+      // store data into an object 
       .then(function (response) {
         var iconCode = response.weather[0].icon;
 
@@ -156,7 +156,7 @@ $("button").on("click", function (event) {
     url: queryURL,
     method: "GET",
   })
-    // Stor date for response
+    // Store date for response
     .then(function (response) {
       // Log the queryURL
       console.log(queryURL);
@@ -173,10 +173,9 @@ $("button").on("click", function (event) {
       );
       $(".humidity").text("Humidity: " + response.main.humidity + " %");
       $(".wind").text("Wind Speed: " + response.wind.speed + " MPH");
-      $("#wicon").attr("src", iconurl);
-      // Converts the temp to Kelvin with the below formula
+      $("#icon").attr("src", iconurl);
 
-      // Log the data in the console as well
+      // Log the data in console 
       console.log("Wind Speed: " + response.wind.speed);
       console.log("Humidity: " + response.main.humidity);
       console.log("Temperature (F): " + response.main.temp);
